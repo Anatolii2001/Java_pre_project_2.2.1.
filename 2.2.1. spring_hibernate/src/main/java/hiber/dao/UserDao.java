@@ -11,5 +11,3 @@ public interface UserDao {
    User getUserByCar(Car car);
 
 }
-
-
