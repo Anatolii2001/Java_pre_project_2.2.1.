@@ -2,7 +2,7 @@
 <project version="4">
   <component name="DBNavigator.Project.DataEditorManager">
     <record-view-column-sorting-type value="BY_INDEX" />
-    <value-preview-text-wrapping value="true" />
+    <value-preview-text-wrapping value="false" />
     <value-preview-pinned value="false" />
   </component>
   <component name="DBNavigator.Project.DataExportManager">
@@ -28,7 +28,7 @@
     <loaded-nodes />
   </component>
   <component name="DBNavigator.Project.DatabaseConsoleManager">
-    <connection id="978317cc-5c9f-4c43-849b-8fe24a8b0b22">
+    <connection id="92338279-3147-4ddd-9320-ecddba7322a8">
       <console name="Connection" type="STANDARD" schema="" session="Main" />
     </connection>
   </component>
@@ -36,7 +36,7 @@
     <open-files />
   </component>
   <component name="DBNavigator.Project.DatabaseSessionManager">
-    <connection id="978317cc-5c9f-4c43-849b-8fe24a8b0b22" />
+    <connection id="92338279-3147-4ddd-9320-ecddba7322a8" />
   </component>
   <component name="DBNavigator.Project.EditorStateManager">
     <last-used-providers />
@@ -67,7 +67,7 @@
   </component>
   <component name="DBNavigator.Project.Settings">
     <connections>
-      <connection id="978317cc-5c9f-4c43-849b-8fe24a8b0b22" active="true" signed="true">
+      <connection id="92338279-3147-4ddd-9320-ecddba7322a8" active="true" signed="true">
         <database>
           <name value="Connection" />
           <description value="" />
@@ -83,7 +83,7 @@
           <database value="mydbtest" />
           <type value="USER_PASSWORD" />
           <user value="root" />
-          <deprecated-pwd value="RnJlZF8xMzA0" />
+          <deprecated-pwd value="cm9vdA==" />
         </database>
         <properties>
           <auto-commit value="false" />
@@ -192,6 +192,7 @@
         <object-type name="FUNCTION" sorting-type="NAME" />
         <object-type name="PROCEDURE" sorting-type="NAME" />
         <object-type name="ARGUMENT" sorting-type="POSITION" />
+        <object-type name="TYPE ATTRIBUTE" sorting-type="POSITION" />
       </sorting>
       <default-editors>
         <object-type name="VIEW" editor-type="SELECTION" />

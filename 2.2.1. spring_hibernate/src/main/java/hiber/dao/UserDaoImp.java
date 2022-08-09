@@ -6,15 +6,20 @@ import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import javax.persistence.NoResultException;
 import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 import java.util.List;
+import java.util.Queue;
 
 @Repository
 public class UserDaoImp implements UserDao {
 
-   @Autowired
    private SessionFactory sessionFactory;
+   @Autowired
+   private UserDaoImp(SessionFactory sessionFactory) {
+      this.sessionFactory = sessionFactory;
+   }
 
    @Override
    public void add(User user) {
@@ -24,15 +29,16 @@ public class UserDaoImp implements UserDao {
    @Override
    @SuppressWarnings("unchecked")
    public List<User> listUsers() {
-      TypedQuery<User> query=sessionFactory.getCurrentSession().createQuery("from User");
+      TypedQuery<User> query = sessionFactory.getCurrentSession().createQuery("from User");
       return query.getResultList();
    }
 
    @Override
-   public User listUsersWithCar(Car car) {
-      Query query = sessionFactory.getCurrentSession()
-              .createQuery("from User where car = :car_id")
-              .setParameter("car_id",car);
-      return (User) query.getSingleResult();
+   @SuppressWarnings("unchecked")
+   public User getUserByCar(Car car) {
+      String hq1 = "from User user where user.car.model = :model and user.car.series = :series";
+      TypedQuery<User> query = sessionFactory.getCurrentSession().createQuery(hq1);
+      query.setParameter("model", car.getModel()).setParameter("series", car.getSeries());
+      return query.setMaxResults(1).getSingleResult();
    }
 }
