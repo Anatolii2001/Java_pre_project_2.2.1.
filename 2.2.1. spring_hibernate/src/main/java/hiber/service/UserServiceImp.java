@@ -13,6 +13,7 @@ import java.util.List;
 public class UserServiceImp implements UserService {
 
    private UserDao userDao;
+
    @Autowired
    public UserServiceImp(UserDao userDao) {
       this.userDao = userDao;
@@ -28,6 +29,11 @@ public class UserServiceImp implements UserService {
    @Override
    public List<User> listUsers() {
       return userDao.listUsers();
+   }
+
+   @Override
+   public void add(Car car) {
+
    }
 
    @Transactional
