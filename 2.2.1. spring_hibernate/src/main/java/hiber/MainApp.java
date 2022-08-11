@@ -35,7 +35,7 @@ public class MainApp {
       for (User user : users) {
           System.out.println(user.toString());
       }
-        System.out.println(userService.getUserByCar(car2).toString());
+        System.out.println(userService.getUserByCar(car4).toString());
       context.close();
    }
 }

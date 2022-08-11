@@ -16,12 +16,11 @@ public class Car {
     @Column(name = "series")
     private int series;
 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "user_id")
     private User user;
 
     public Car() {
-
     }
 
     public Car(String model, int series) {
@@ -75,7 +74,7 @@ public class Car {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Car car = (Car) o;
-        return series == car.series && id.equals(car.id) && model.equals(car.model) && user.equals(car.user);
+        return series == car.series && Objects.equals(id, car.id) && Objects.equals(model, car.model) && Objects.equals(user, car.user);
     }
 
     @Override
