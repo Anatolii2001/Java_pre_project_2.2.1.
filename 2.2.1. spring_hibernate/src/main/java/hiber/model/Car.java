@@ -17,6 +17,7 @@ public class Car {
     private int series;
 
     @OneToOne
+    @JoinColumn(name = "user_id")
     private User user;
 
     public Car() {
@@ -50,6 +51,15 @@ public class Car {
 
     public void setSeries(int series) {
         this.series = series;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public User setUser(User user) {
+        this.user = user;
+        return user;
     }
 
     @Override
