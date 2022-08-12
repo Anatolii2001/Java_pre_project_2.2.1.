@@ -3,21 +3,21 @@ package hiber.model;
 import javax.persistence.*;
 import java.util.Objects;
 
-@Entity //Сущность
-@Table(name = "cars") //Таблица с именем "cars"
+@Entity
+@Table(name = "cars")
 public class Car {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY) //Сгенерированное значение, (стратегия = тип генерации. Идентичность)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "model") //Колонка
+    @Column(name = "model")
     private String model;
 
-    @Column(name = "series") //Колонка
+    @Column(name = "series")
     private int series;
 
-    @OneToOne(cascade = CascadeType.ALL) //Один на один (каскад = тип каскада. Все
-    @JoinColumn(name = "user_id") //Объединенная колонка
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "user_id")
     private User user;
 
     public Car() {

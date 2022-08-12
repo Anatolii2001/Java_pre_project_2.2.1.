@@ -16,7 +16,6 @@ public class MainApp {
 
       UserService userService = context.getBean(UserService.class);
       UserService carService = context.getBean(UserService.class);
-      // Создаем UserService с именем userService через context.getBean из интерфейса UserService
 
       User user1 = new User("User1", "LastName1", "user1@mail.ru");
       User user2 = new User("User2", "LastName2", "user2@mail.ru");
@@ -34,9 +33,15 @@ public class MainApp {
       userService.add(user4.setCar(car4).setUser(user4));
 
       List<User> users = userService.listUsers();
-      for (User user : users) {
+          for (User user : users) {
           System.out.println(user.toString());
-      }
+          }
+
+      List<Car> cars = carService.listCars();
+          for (Car car : cars) {
+            System.out.println(car.toString());
+          }
+
         System.out.println(userService.getUserByCar(car4).toString());
       context.close();
    }

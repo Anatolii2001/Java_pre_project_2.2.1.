@@ -9,46 +9,42 @@ import org.springframework.stereotype.Repository;
 import javax.persistence.TypedQuery;
 import java.util.List;
 
-@Repository //Хранилище
+@Repository
 public class UserDaoImp implements UserDao {
 
-   @Autowired //Автопроводка
-   private SessionFactory sessionFactory; //Фабрика сеансов
+   @Autowired
+   private SessionFactory sessionFactory;
 
-   @Override //Переопределение
-   //Добавить пользователя
+   @Override
    public void add(User user) {
-      //Фабрика сеансов. Получить текущую сессию. Сохранить (пользователя)
       sessionFactory.getCurrentSession().save(user);
    }
 
    @Override
    public void add(Car car) {
-
-   }
-
-   @Override //Переопределение
-   @SuppressWarnings("unchecked") //Подавление предупреждений "непроверенный"
-   public List<User> listUsers() {
-      //Типизированный запрос = фабрика сеансов. Получить текущую сессию. Создать запрос (от пользователя)
-      TypedQuery<User> query = sessionFactory.getCurrentSession().createQuery("from User");
-      return query.getResultList(); // Запрос. Получить список результатов
+      sessionFactory.getCurrentSession().save(car);
    }
 
    @Override
-   public List<Car> listCars() {
-      return null;
+   @SuppressWarnings("unchecked")
+   public List<User> listUsers() {
+      TypedQuery<User> query = sessionFactory.getCurrentSession().createQuery("from User");
+      return query.getResultList();
    }
 
-   @Override //Переопределение
-   @SuppressWarnings("unchecked") //Подавление предупреждений "непроверенный"
+   @Override
+   @SuppressWarnings("unchecked")
+   public List<Car> listCars() {
+      TypedQuery<Car> query = sessionFactory.getCurrentSession().createQuery("from Car ");
+      return query.getResultList();
+   }
+
+   @Override
+   @SuppressWarnings("unchecked")
    public User getUserByCar(Car car) {
       String hql = "from User user where user.car.model = :model and user.car.series = :series";
-      //Типизированный запрос = фабрика сеансов. Получить текущую сессию. Создать запрос (hql)
       TypedQuery<User> query = sessionFactory.getCurrentSession().createQuery(hql);
-      //Запрос. Заданный параметр
       query.setParameter("model", car.getModel()).setParameter("series", car.getSeries());
-      //Запрос. Установить максимальный результат. Получить единый результат
       return query.setMaxResults(1).getSingleResult();
    }
 }
