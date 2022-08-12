@@ -15,6 +15,8 @@ public class MainApp {
             new AnnotationConfigApplicationContext(AppConfig.class);
 
       UserService userService = context.getBean(UserService.class);
+      UserService carService = context.getBean(UserService.class);
+      // Создаем UserService с именем userService через context.getBean из интерфейса UserService
 
       User user1 = new User("User1", "LastName1", "user1@mail.ru");
       User user2 = new User("User2", "LastName2", "user2@mail.ru");
